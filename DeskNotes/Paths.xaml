@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DeskNotes">
+    <Viewbox x:Key="Paths.Settings" x:Shared="False" Stretch="Uniform">
+        <Canvas Width="300" Height="300">
+            <Canvas>
+                <Canvas>
+                    <Ellipse Canvas.Left="121.8" Canvas.Top="127.9" Width="56.4" Height="56.4" Fill="{Binding RelativeSource={RelativeSource AncestorType=ContentControl, Mode=FindAncestor}, Path=Foreground, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Path Fill="{Binding RelativeSource={RelativeSource AncestorType=ContentControl, Mode=FindAncestor}, Path=Foreground, UpdateSourceTrigger=PropertyChanged}">
+                        <Path.Data>
+                            <PathGeometry Figures="M149.996 0C67.157 0 0.001 67.161 0.001 149.997S67.157 300 149.996 300s150.003-67.163 150.003-150.003     S232.835 0 149.996 0z M228.82 171.799l-21.306 1.372c-1.193 4.02-2.783 7.866-4.746 11.482l14.088 16.039l-22.245 22.243     l-16.031-14.091c-3.618 1.961-7.464 3.551-11.482 4.741l-1.377 21.311l-31.458-0.003l-1.375-21.309     c-4.015-1.19-7.861-2.78-11.479-4.741l-16.034 14.091l-22.243-22.25l14.088-16.031c-1.963-3.618-3.553-7.464-4.746-11.482     l-21.306-1.375v-31.458l21.306-1.375c1.193-4.015 2.786-7.864 4.746-11.479l-14.088-16.031l22.245-22.248l16.031 14.088     c3.618-1.963 7.464-3.551 11.484-4.744l1.375-21.309h31.452l1.377 21.309c4.017 1.193 7.864 2.78 11.482 4.744l16.036-14.088     l22.243 22.248l-14.088 16.031c1.961 3.618 3.553 7.464 4.746 11.479l21.306 1.375L228.82 171.799z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+
+    <Viewbox x:Key="Paths.Add" x:Shared="False" Stretch="Uniform">
+        <Canvas Width="510" Height="510">
+            <Canvas>
+                <Canvas>
+                    <Path Fill="{Binding RelativeSource={RelativeSource AncestorType=ContentControl, Mode=FindAncestor}, Path=Foreground, UpdateSourceTrigger=PropertyChanged}">
+                        <Path.Data>
+                            <PathGeometry Figures="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255s255-114.75 255-255S395.25 0 255 0z M382.5 280.5h-102v102h-51v-102    h-102v-51h102v-102h51v102h102V280.5z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+
+    <Viewbox x:Key="Paths.Remove" x:Shared="False" Stretch="Uniform">
+        <Canvas Width="27.965" Height="27.965">
+            <Canvas>
+                <Canvas>
+                    <Path Fill="{Binding RelativeSource={RelativeSource AncestorType=ContentControl, Mode=FindAncestor}, Path=Foreground, UpdateSourceTrigger=PropertyChanged}">
+                        <Path.Data>
+                            <PathGeometry Figures="M13.98 0C6.259 0 0 6.261 0 13.983c0 7.721 6.259 13.982 13.98 13.982c7.725 0 13.985-6.262 13.985-13.982    C27.965 6.261 21.705 0 13.98 0z M19.992 17.769l-2.227 2.224c0 0-3.523-3.78-3.786-3.78c-0.259 0-3.783 3.78-3.783 3.78    l-2.228-2.224c0 0 3.784-3.472 3.784-3.781c0-0.314-3.784-3.787-3.784-3.787l2.228-2.229c0 0 3.553 3.782 3.783 3.782    c0.232 0 3.786-3.782 3.786-3.782l2.227 2.229c0 0-3.785 3.523-3.785 3.787C16.207 14.239 19.992 17.769 19.992 17.769z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+    
+</ResourceDictionary>
