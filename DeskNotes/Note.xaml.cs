@@ -24,10 +24,31 @@ namespace DeskNotes
     public partial class Note : Window
     {
         Thumb thumb = new Thumb {Width = 0, Height = 0};
+        private Page page;
+        private bool initialized = false;
 
         public Note()
         {
             InitializeComponent();
+            baseConstructor();
+        }
+
+        public Note(int pageNumber)
+        {
+            InitializeComponent();
+            baseConstructor();
+            page = Settings.Pages.Where(w => w.pageNumber == pageNumber).FirstOrDefault();
+            txtTitle.Text = page.title;
+            txtContent.Text = page.content;
+            this.Top = page.location.Height;
+            this.Left = page.location.Width;
+            this.Width = page.size.Width;
+            this.Height = page.size.Height;
+            initialized = true;
+        }
+
+        private void baseConstructor()
+        {
             thumb.DragDelta += Thumb_DragDelta;
             ContentCanvas.Children.Add(thumb);
         }
@@ -36,6 +57,7 @@ namespace DeskNotes
         {
             this.Left += e.HorizontalChange;
             this.Top += e.VerticalChange;
+            if (initialized) page.location = new System.Drawing.Size((int)this.Left, (int)this.Top);
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -45,6 +67,12 @@ namespace DeskNotes
 
         private void txtTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (initialized) page.title = txtTitle.Text;
+        }
+
+        private void txtContent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (initialized) page.content = txtContent.Text;
         }
 
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
@@ -55,6 +83,31 @@ namespace DeskNotes
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
             ((Storyboard)TryFindResource("Storyboard.FadeIn")).Begin();
+        }
+        
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Pages.Remove(page);
+            this.Close();
+            if(Settings.PageCount == 0)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Page p = new Page();
+            p.backColor = "";
+            p.titleColor = "";
+            p.pageNumber = Settings.Pages.Max(m => m.pageNumber) + 1;
+            p.title = "Notes - " + p.pageNumber;
+            p.content = "";
+            p.location = Settings.DefaultLocation;
+            p.size = new System.Drawing.Size(300, 400);
+            Settings.Pages.Add(p);
+            Note note = new Note(p.pageNumber);
+            note.Show();
         }
     }
 }

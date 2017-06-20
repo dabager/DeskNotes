@@ -12,7 +12,8 @@
         Background="Transparent"
         AllowsTransparency="True"
         Topmost="False"
-        Title="DeskNotes">
+        Title="DeskNotes"
+        ShowInTaskbar="False">
 
     <Window.Resources>
         <Storyboard x:Key="Storyboard.FadeIn">
@@ -121,7 +122,7 @@
     </Window.Resources>
 
     <Grid Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Mode=OneWay}"
-              Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Mode=OneWay}">
+          Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
@@ -163,7 +164,8 @@
                              VerticalContentAlignment="Center"
                              FontFamily="Gibson"
                              FontWeight="Light"
-                             FontSize="26"/>
+                             FontSize="26"
+                             TextChanged="txtTitle_TextChanged"/>
                                         
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
@@ -206,6 +208,7 @@
                                 Opacity="0"
                                 Grid.Column="1"
                                 Margin="0,7,0,7"
+                                Click="btnAdd_Click"
                                 Template="{DynamicResource Button.Transparent}">
                             <Button.Content>
                                 <ContentControl Content="{StaticResource Paths.Add}" Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}, Mode=OneWay}" Margin="0"/>
@@ -216,6 +219,7 @@
                                 Opacity="0"
                                 Grid.Column="2"
                                 Margin="0,7,0,7"
+                                Click="btnRemove_Click"
                                 Template="{DynamicResource Button.Transparent}" RenderTransformOrigin="0.5,0.5">
                             <Button.RenderTransform>
                                 <TransformGroup>
@@ -249,6 +253,7 @@
                      FontSize="14"
                      AcceptsReturn="True"
                      TextWrapping="Wrap"
+                     TextChanged="txtContent_TextChanged"
                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.CanContentScroll="True"/>
